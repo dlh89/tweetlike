@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Compose
+{% endblock %}
+
+{% block main %}
+<div class="container-fluid bg-1">
+    <h3>Vocabulary</h3>
+    <ul style="list-style: none" id="vocabulary" class="connectedSortable">
+        {% for word in words %}
+        <li class="word-box">{{ word }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="container-fluid info-text">
+    <div class="container">
+        <h1>TweetLike@{{ username }}</h1>
+    </div>
+    <div class="container">
+        <ul style="list-style: none" id="tweet-composer" class="connectedSortable img-rounded" data-empty-message="Drag and drop words here"></ul>
+        <button type="button" class="btn btn-primary" id="submit"><strong>Submit</strong></button>
+    </div>
+</div>
+
+<div class="container-fluid info-text">
+    <div class="container">
+        <div id="final-tweet"><h1>Final Tweet:</h1>
+        </div>
+    </div>
+</div>
+</html>
+
+{% endblock %}
