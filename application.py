@@ -4,7 +4,6 @@ import string
 import cfg
 
 app = Flask(__name__)
-app.secret_key = "cs50project"
 
 @app.route('/', methods=["GET", "POST"])
 def index():
