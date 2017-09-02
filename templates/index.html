@@ -20,8 +20,8 @@ Index
     {% endif %}
     {% endwith %}
     <h3>Who do you want to tweet like?</h3>
-    <form class="input-group" style="width:300px; margin: 0 auto;" action="{{ url_for('index') }}" method="post">
-        <input type="text" class="form-control" name="username" placeholder="Enter a twitter username...">
+    <form class="input-group" style="width:300px; margin: 0 auto;" action="{{ url_for('compose') }}" method="get">
+        <input type="text" class="form-control" name="username" placeholder="Enter a twitter username">
       <span class="input-group-btn">
         <button class="btn btn-default" type="submit">Go!</button>
       </span>

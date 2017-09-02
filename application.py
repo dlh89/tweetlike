@@ -5,26 +5,22 @@ import cfg
 
 app = Flask(__name__)
 
-@app.route('/', methods=["GET", "POST"])
+@app.route('/', methods=["GET"])
 def index():
     if request.method == "GET":
         return render_template("index.html")
 
-    if request.method == "POST":
-        username = request.form.get("username")
+
+@app.route('/compose/', methods=["GET", "POST"])
+def compose():
+    if request.method == "GET":
+        username = request.args.get("username")
         try:
             words = get_tweets(username)
             return render_template("compose.html", words=words, username=username)
         except twitter.error.TwitterError:
             flash("That username was not found. Please try again.", category="warning")
             return redirect(url_for("index"))
-
-
-@app.route('/compose/', methods=["GET", "POST"])
-def compose():
-    if request.method == "GET":
-        words = get_tweets()
-        return render_template("compose.html", words=words)
     if request.method == "POST":
         return render_template("tweet.html", submitted_tweet=request.form.get("message"))
 
